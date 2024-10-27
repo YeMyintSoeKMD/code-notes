@@ -247,7 +247,9 @@ This function can be invoked or called from the parent like this
 </script>
 ``` 
 
-## REFERENCE
+<br/><br/>
+
+## VI. REFERENCE
 ### Official Documentation
 - Main Docs
 <br/> https://videojs.com
@@ -266,6 +268,13 @@ This function can be invoked or called from the parent like this
 
 - Plugins 
 <br/> https://videojs.com/plugins
+
+<br/><br/>
+
+## VII. ALTERNATIVE ONES
+- Plyr
+<br/> https://plyr.io/
+
 
 
 
