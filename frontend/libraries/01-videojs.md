@@ -2,10 +2,12 @@
 Video player for video streaming feature. 
 <br/><i>(In this docs, Videojs integration will be described by Vannilla Js and Vue.js)</i>
 
+<br/><br/>
 
 ## I. PURPOSE
 To enhance video player for seamless video streaming service. There are many options, theme and plugins to make video player flexible.
 
+<br/><br/>
 
 ## II. SETUP
 Videojs package can be installed by CDN or NPM. 
@@ -30,6 +32,8 @@ yarn add videojs-hotkeys
 
 npm i videojs-hotkeys --save
 ```
+
+<br/><br/>
 
 ## III. CODE
 ### Basic Integration
@@ -176,6 +180,8 @@ Finally, use the component like this
 </script>
 ```
 
+<br/><br/>
+
 ## IV. STYLING
 These are the basic and ready to use styles for both Vannilla and Vue.js setup
 ```css
@@ -206,7 +212,9 @@ These are the basic and ready to use styles for both Vannilla and Vue.js setup
 
 ```
 
-## SIDENOTE
+<br/><br/>
+
+## V. SIDENOTE
 In Vue.js integration, there are some issue you have to know. 
 
 - In the component, ```video``` tag must be wrapped by a ```div``` for some reason like for responsive.
