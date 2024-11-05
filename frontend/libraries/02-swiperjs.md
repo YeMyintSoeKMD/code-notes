@@ -1,6 +1,6 @@
 # SwiperJs
 Feature rich slider library for frontend UI.
-<br/><i>(In this docs, swiperjs integration will be described by Vannilla Js and Vue.js)</i>
+<br/><i>(In this docs, swiperjs integration will be described by Vue.js 3)</i>
 
 <br/><br/>
 
