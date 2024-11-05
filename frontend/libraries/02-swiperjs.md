@@ -1,11 +1,11 @@
-# Video Js
+# SwiperJs
 Feature rich slider library for frontend UI.
 <br/><i>(In this docs, swiperjs integration will be described by Vannilla Js and Vue.js)</i>
 
 <br/><br/>
 
 ## I. PURPOSE
-To easily get a slider component with many options and features. There are many options and components to make sliders flexible.
+To easily implement a flexible slider feature with many options.
 
 <br/><br/>
 
@@ -27,13 +27,7 @@ npm install swiper
 
 ## III. CODE
 ### Basic Integration
-#### Vannilla Js
-This is a basic Vannilla Js and Video.js player implementation. 
-...
-
 #### Vue.js 3 
-I am going to create a video player component file and use it in other compoent.
-
 This is a basic Vue.js 3 and SwiperJs implementation.
 
 ```html
@@ -82,6 +76,7 @@ onMounted(() => {
 });
 </script>
 ```
+For advanced feature, see this https://swiperjs.com/element#usage-with-vue
 
 <br/><br/>
 
@@ -119,17 +114,20 @@ These are the basic and ready to use styles
 <br/><br/>
 
 ## V. SIDENOTE
-...
+SwiperJs is the frontend slider that can be used in any frontend frameworks. But SwiperJs is recommended one both Core app and Vue app.
 
 <br/><br/>
 
 ## VI. REFERENCE
 ### Official Documentation
-- Main
-<br/> ...
+- Main Docs
+<br/> https://swiperjs.com/element
+
+- With Vue (But this is not recommended, so use element in vue app)
+<br/> https://swiperjs.com/vue
 
 <br/><br/>
 
 ## VII. ALTERNATIVE ONES
-- ...
-<br/> ...
+- Vue Splide
+<br/> https://splidejs.com/integration/vue-splide/

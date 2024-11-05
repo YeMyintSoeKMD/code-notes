@@ -274,11 +274,3 @@ This function can be invoked or called from the parent like this
 ## VII. ALTERNATIVE ONES
 - Plyr
 <br/> https://plyr.io/
-
-
-
-
-
-
-
-
