@@ -83,6 +83,9 @@ For advanced feature, see this https://swiperjs.com/element#usage-with-vue
 ## IV. STYLING
 These are the basic and ready to use styles
 ```css
+.swiper { ... }
+.swiper-wrapper { ... }
+
 .swiper-slide {
   text-align: center;
   font-size: 18px;
