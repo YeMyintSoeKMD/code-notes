@@ -35,7 +35,7 @@ After Starter Kit installed, not only "the whole VILT stacks" and also "breeze a
 
 # III. Resuable Components
 
-In resources directory
+## httpMethods.js
 
 ```plaintext
 resource
