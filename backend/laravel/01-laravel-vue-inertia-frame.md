@@ -33,7 +33,7 @@ After Starter Kit installed, not only "the whole VILT stacks" and also "breeze a
 
 <br />
 
-# III. Resuable Components
+# II. Resuable Components
 
 ## 1. Folder Structures
 
