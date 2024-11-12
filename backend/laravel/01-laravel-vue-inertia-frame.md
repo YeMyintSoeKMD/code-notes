@@ -1,189 +1,39 @@
-# laravel - Inertia Project Setup
+# laravel + Vue.js with Inertia Project Setup
 
-This docs is intended to be used for laravel inertia projects.
+This docs is intended to be used for "Laravel Vue with Inertia" projects. The project type can be known as VILT stacks.
 
-## I. project installation
+VILT => Vue.js, InertiaJs, Laravel, TailwindCSS
 
-You can install laravel project this command
+# I. Project Installation
+## Option 1
+For the installattion process, All of these (Vue.js, InertiaJs, Laravel, TailwindCSS) can be install one by one manually. This is because of the Laravel based project, the installation process might be as below -
+1. Install Laravel
+   https://laravel.com/docs/11.x/installation
+  
+2. Install InertiaJs
+   https://inertiajs.com/server-side-setup
+   https://inertiajs.com/client-side-setup
 
-```
-composer create-project laravel/laravel example-app
-```
+3. Install Vue.js
+   https://laravel.com/docs/11.x/vite#vue
 
-and then modify .env file
+4. Install TailwindCSS
+   https://tailwindcss.com/docs/guides/laravel
 
-```
-DB_CONNECTION=mysql 
-DB_HOST=127.0.0.1 
-DB_PORT=3306 
-DB_DATABASE=your-database 
-DB_USERNAME=root 
-DB_PASSWORD= your-password
+## Option 2
+There is another option that we can install the whole VILT with one go. It is exactly "Laravel Starter Kit". The installation process will be as below
+1. Install Laravel
+   https://laravel.com/docs/11.x/installation
 
-```
+3. Install Laravel Starter Kit
+   https://laravel.com/docs/11.x/starter-kits#laravel-breeze-installation
 
-and install composer
-
-```
-composer install
-```
-
-<br />
-
-## II. inertia installation
-
-Inertia installation is divided by two parts
-
-- Server-side installation and
-- Client-side installation
+### Side Note
+After Starter Kit installed, not only "the whole VILT stacks" and also "breeze authentication" will be included.
 
 <br />
 
-### Server-side installation
-
-First, install the Inertia server-side adapter using the Composer package manager.
-
-```
-composer require inertiajs/inertia-laravel
-```
-
-<br />
-
-#### Root Template
-
-Next, setup the root template that will be loaded on the first page visit to your application.Add this to root template of your application
-
-``` html
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    @vite('resources/js/app.js')
-    @inertiaHead
-  </head>
-  <body>
-    @inertia
-  </body>
-</html>
-```
-
-<br/>
-
-#### Middleware
-
-Next we need to setup the Inertia middleware. You can accomplish this by publishing the HandleInertiaRequests middleware to your application, which can be done using the following Artisan command.
-
-```
-php artisan inertia:middleware
-```
-
-Once the middleware has been published, append the HandleInertiaRequests middleware to the web middleware group in your application's bootstrap/app.php file.
-
-```php
-use App\Http\Middleware\HandleInertiaRequests;
-
-->withMiddleware(function (Middleware $middleware) {
-    $middleware->web(append: [
-        HandleInertiaRequests::class,
-    ]);
-})
-```
-
-<br />
-
-#### Creating Response
-
-```php
-use Inertia\Inertia;
-
-class EventsController extends Controller
-{
-    public function show(Event $event)
-    {
-        return Inertia::render('Event/Show', [
-            'event' => $event->only(
-                'id',
-                'title',
-                'start_date',
-                'description'
-            ),
-        ]);
-    }
-}
-```
-
-<br/>
-
-### Client-side installation
-
-#### install dependencies
-
-Install dependencies with npm
-
-```
-npm install @inertiajs/vue3
-```
-
-#### Initialize inertia
-
-Next, update your main JavaScript file to boot your Inertia app. To accomplish this, we'll initialize the client-side framework with the base Inertia component.
-
-```js
-import { createApp, h } from 'vue'
-import { createInertiaApp } from '@inertiajs/vue3'
-
-createInertiaApp({
-  resolve: name => {
-    const pages = import.meta.glob('./Pages/**/*.vue', { eager: true })
-    return pages[`./Pages/${name}.vue`]
-  },
-  setup({ el, App, props, plugin }) {
-    createApp({ render: () => h(App, props) })
-      .use(plugin)
-      .mount(el)
-  },
-})
-```
-
-If you will used vue you need to install that
-
-```
-npm install --save-dev @vitejs/plugin-vue
-```
-
-after installation process add this code into   ```vite.config.js```
-
-```js
-import vue from '@vitejs/plugin-vue';
-
-
-  plugins: [
-        vue({
-            template: {
-                transformAssetUrls: {
-                    // The Vue plugin will re-write asset URLs, when referenced
-                    // in Single File Components, to point to the Laravel web
-                    // server. Setting this to `null` allows the Laravel plugin
-                    // to instead re-write asset URLs to point to the Vite
-                    // server instead.
-                    base: null,
- 
-                    // The Vue plugin will parse absolute URLs and treat them
-                    // as absolute paths to files on disk. Setting this to
-                    // `false` will leave absolute URLs un-touched so they can
-                    // reference assets in the public directory as expected.
-                    includeAbsolute: false,
-                },
-            },
-        }),
-    ],
- 
- ```
-
-<br />
-
-## III. Resuable Components
+# III. Resuable Components
 
 In resources directory
 
@@ -207,6 +57,10 @@ In ```resource/js/Composables/httpmethod.js``` have http methods
 
 ``` js
 
+/**
+* That is post method
+* you can call ```post(form,'route('example.store')')``` when you need post method
+*/
 const post = (form, url, preserveScroll = true, tasksOnSuccess = () => {}) => {
     form.submit("post", url, {
         preserveScroll: preserveScroll,
@@ -219,12 +73,11 @@ const post = (form, url, preserveScroll = true, tasksOnSuccess = () => {}) => {
         },
     });
 };
-```
 
-That is post method
-you can call ```post(form,'route('example.store')')``` when you need post method
-
-```js
+/**
+* That is get method
+* you can call ```get(form,route('example.index'))``` when you need get method
+*/
 const get = (form, url,preserveScroll = true, tasksOnSuccess = () => {}) => {
     form.submit("get", url, {
         preserveScroll: preserveScroll,
@@ -235,12 +88,11 @@ const get = (form, url,preserveScroll = true, tasksOnSuccess = () => {}) => {
         },
     });
 };
-```
 
-That is get method
-you can call ```get(form,route('example.index'))``` when you need get method
-
-```js
+/**
+* That is update method (note => this update method is just for text not for file)
+* you can call ```update(form,route('example.update'))``` when you need update method
+*/
 const update = (form, url, tasksOnSuccess = () => {}) => {
     let options = {
         preserveScroll: true,
@@ -251,13 +103,11 @@ const update = (form, url, tasksOnSuccess = () => {}) => {
     };
     form.submit("put", url, options);
 };
-```
 
-That is update method (note => this update method is just for text not for file)
-you can call ```update(form,route('example.update'))``` when you need update method
-
-```js
-
+/**
+* This update method is you can use when file update
+* you can call ```updateWithFile(form,route('example.update'))``` when you want  update file such as image or video ....
+*/
 const updateWithFile = (method, form, url, tasksOnSuccess = () => {}) => {
     form.processing = true;
     form._method = method;
@@ -281,9 +131,6 @@ const updateWithFile = (method, form, url, tasksOnSuccess = () => {}) => {
     });
 };
 ```
-
-This update method is you can use when file update
-you can call ```updateWithFile(form,route('example.update'))``` when you want  update file such as image or video ....
 
 In  ```resource/js/Pages/Admin/AdminComponents``` directory have Layout.vue , Sidebar.vue , NavBar.vue file.
 
