@@ -35,7 +35,7 @@ After Starter Kit installed, not only "the whole VILT stacks" and also "breeze a
 
 # III. Resuable Components
 
-## httpMethods.js
+## 1. Folder Structures
 
 ```plaintext
 resource
@@ -52,11 +52,10 @@ resource
 │   │   ├── Front
 └── view
 ```
+In  ```resource/js/Pages/Admin/AdminComponents``` directory, there will be Layout.vue , Sidebar.vue , NavBar.vue file.
 
-In ```resource/js/Composables/httpmethod.js``` have http methods
-
+## 2. httpMethods.js
 ``` js
-
 /**
 * That is post method
 * you can call ```post(form,'route('example.store')')``` when you need post method
@@ -132,10 +131,7 @@ const updateWithFile = (method, form, url, tasksOnSuccess = () => {}) => {
 };
 ```
 
-In  ```resource/js/Pages/Admin/AdminComponents``` directory have Layout.vue , Sidebar.vue , NavBar.vue file.
-
-At Layout.vue
-
+## 3. Layout.vue
 ```javascript
 
 <template>
