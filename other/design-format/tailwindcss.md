@@ -7,11 +7,11 @@
 
 # 2. HTML Structure
 Use semantic HTML
-- <main>
-- <header>
-- <footer>
-- <section>,
-- <aside>
+- main
+- header
+- footer
+- section
+- aside
 <br/> etc. for better accessibility and SEO.
 
 # 3. TailwindCSS Class Ordering
