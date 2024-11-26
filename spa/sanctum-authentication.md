@@ -1,4 +1,6 @@
 ```php
+// AuthController
+
 class AuthController extends Controller
 {
     /**
