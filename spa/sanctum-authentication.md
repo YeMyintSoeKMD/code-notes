@@ -145,4 +145,172 @@ class AuthController extends Controller
 # Frontend Side (Vue.js)
 Now, let's implement in frontend side.
 
-## 1. 
+## 1. Create axios instance
+This ensure wetting up axios with headers, authorization and token remove when token does exit on server
+```js
+// axios.js
+import axios from "axios";
+
+// Create an instance of Axios
+axios.create({
+  baseURL: "http://localhost:8000/api",
+  headers: { "X-Requested-With": "XMLHttpRequest" },
+});
+
+// Add an interceptor to set the Authorization header
+axios.interceptors.request.use((config) => {
+  const token = localStorage.getItem("appToken");
+  if (token) {
+    config.headers["Authorization"] = `Bearer ${token}`;
+  } else {
+    console.log("no token - from config");
+  }
+  return config;
+});
+
+// this is just to remove token from local storage when there is no token in the server
+axios.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    // Handle 401 Unauthorized errors
+    if (error.response && error.response.status === 401) {
+      localStorage.removeItem("appToken");
+      window.location.replace("/");
+    }
+    return Promise.reject(error);
+  }
+);
+
+export default axios;
+```
+
+## 2. Authentication codes at store
+```js
+// stores/auth.js
+
+import axios from "@/composables/axios";
+
+export const useAuthStore = defineStore('auth', () => {
+    /**
+     * Get auth user
+    */
+    const authUser = ref({})
+    const getAuthUser = async () => {
+      try {
+        const res = await axiosInstance.get(`/get-auth`);
+        if(res.status === 200){
+            authUser.value = res.data.data
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    /**
+     * Register
+    */
+    const registerForm = reactive({
+      'name': '',
+      'email': '',
+      'password': ''
+    })
+    const register = async () => {
+      try {
+        const res = await axios.post("/register", registerForm);
+        if(res.status === 201){
+          // some logic after success 
+        }
+      } catch (error) {
+       // fails
+      }
+    }
+
+    /**
+     * Login
+    */
+    const loginForm = reactive({
+      'email': '',
+      'password': ''
+    })
+    const login = async () => {
+      try {
+        const res = await axios.post("/login", loginForm);
+        if(res.status === 201){
+          localStorage.setItem('taskToken', res.data.data)
+          // some logic after success 
+        }
+      } catch (error) {
+        // fails
+      }
+    }
+
+  /**
+   * Logout
+  */
+  const logout = async () => {
+    if(!confirm('Are you sure to logout?')) {
+      return
+    }
+    try {
+      const res = await axios.post("/logout");
+      if(res.status === 200){
+        localStorage.removeItem('taskToken')
+        // some logic after success
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+ 
+
+  return { 
+    getAuthUser, 
+    authUser, 
+
+    registerForm, 
+    register,
+
+    loginForm, 
+    login,
+
+    logout
+  }
+})
+```
+
+## 3. Protecting Routes
+```js
+// router/index.js
+
+...
+
+// Protecting routes
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem("ooredooToken");
+
+  // public routes
+  const publicRoutes = ["home", "login"];
+
+  if (!publicRoutes.includes(to.name) && !token) {
+    next({ name: "login" });
+  } else {
+    next();
+  }
+});
+export default router;
+```
+
+
+## 4. Prevent login page after authenticated
+```js
+<script setup>
+...
+
+onMounted(() => {
+  const token = localStorage.getItem("appToken");
+  if (token) {
+    router.push("/");
+  }
+});
+</script>
+```
