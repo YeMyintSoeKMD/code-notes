@@ -30,7 +30,7 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 ```
 
-## 4. Add API response custom helper in Controller.php
+## 4. Add custom API response helper method in Controller.php
 ```php
 // Controller.php
 /**
