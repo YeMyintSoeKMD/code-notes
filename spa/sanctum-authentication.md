@@ -40,7 +40,7 @@ class AuthController extends Controller
                 return $this->failsResponse("Login fails", $validator->messages());
             }
             if (auth()->attempt($validator->validated())) {
-                $user = auth()->user();
+                $user = Auth::user();
 
                 $token = $user->createToken('task')->plainTextToken;
                 return $this->successResponse($token, 201);
