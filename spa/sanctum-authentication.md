@@ -5,6 +5,7 @@ class AuthController extends Controller
 {
     /**
      * Register
+     * @param Request $request
      */
     public function register(Request $request)
     {
@@ -26,6 +27,7 @@ class AuthController extends Controller
 
     /**
      * Login
+     * @param Request $request
      */
     public function login(Request $request)
     {
@@ -52,6 +54,7 @@ class AuthController extends Controller
 
     /**
      * Logout
+     * @param Request $request
      */
     public function logout(Request $request)
     {
