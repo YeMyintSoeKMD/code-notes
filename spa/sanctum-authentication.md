@@ -1,18 +1,71 @@
-# First, use HasApiTokens in User.php
+# Backend Side (Laravel)
+Let's talk about backend first.
+
+## Installation
+```
+php artisan api:install
+```
+
+## use HasApiTokens in User.php
 ```php
 // User.php
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasApiTokens;
+    use HasApiTokens;
     ...
 }
 ```
 
-# AuthController Codes
+## Routes (api.php)
 ```php
-// AuthController
+// api.php
+
+Route::post('register', [AuthController::class, 'register']);
+Route::post('login', [AuthController::class, 'login']);
+Route::middleware('auth:sanctum')->group(function () {
+    // Logout
+    Route::post('logout', [AuthController::class, 'logout']);
+    Route::get('get-auth', [AuthController::class, 'getAuthUser']);
+});
+```
+
+## Common response in Controller.php
+```php
+// Controller.php
+/**
+ * Success response
+ * @param Object $data
+ * @param HTTP_STATUS_CODE $statusCode
+*/
+protected function successResponse($data, $statusCode = 200)
+{
+    return response()->json([
+        'status' => 'success',
+        'data' => $data,
+    ], $statusCode);
+}
+
+/**
+ * Fails response
+ * @param String $message
+ * @param String $error
+ * @param HTTP_STATUS_CODE $statusCode
+*/
+protected function failsResponse($message, $error, $statusCode = 500)
+{
+    return response()->json([
+        'status' => 'fails',
+        'message' => $message,
+        'error' => $error,
+    ], $statusCode);
+}
+```
+
+## AuthController Codes
+```php
+// AuthController.php
 
 class AuthController extends Controller
 {
