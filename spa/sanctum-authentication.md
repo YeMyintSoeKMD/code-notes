@@ -6,7 +6,7 @@ Let's talk about backend first.
 php artisan api:install
 ```
 
-## use HasApiTokens in User.php
+## Use HasApiTokens in User.php
 ```php
 // User.php
 use Laravel\Sanctum\HasApiTokens;
