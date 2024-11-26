@@ -6,7 +6,7 @@ Let's talk about backend first.
 php artisan api:install
 ```
 
-## 2. Use HasApiTokens in User.php
+## 2. Use HasApiTokens trait in User.php
 ```php
 // User.php
 use Laravel\Sanctum\HasApiTokens;
@@ -25,7 +25,6 @@ class User extends Authenticatable
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
-    // Logout
     Route::post('logout', [AuthController::class, 'logout']);
     Route::get('get-auth', [AuthController::class, 'getAuthUser']);
 });
