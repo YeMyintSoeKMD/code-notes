@@ -1,3 +1,14 @@
+# First, use sdfsdf in User.php
+```php
+use Laravel\Sanctum\HasApiTokens;
+
+class User extends Authenticatable
+{
+    use HasFactory, Notifiable, HasApiTokens;
+    ...
+}
+```
+
 ```php
 // AuthController
 
