@@ -1,4 +1,4 @@
-# First, use sdfsdf in User.php
+# First, use HasApiTokens in User.php
 ```php
 use Laravel\Sanctum\HasApiTokens;
 
