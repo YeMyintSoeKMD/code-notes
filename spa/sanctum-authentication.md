@@ -107,7 +107,7 @@ class AuthController extends Controller
             if (auth()->attempt($validator->validated())) {
                 $user = Auth::user();
 
-                $token = $user->createToken('task')->plainTextToken;
+                $token = $user->createToken('appToken')->plainTextToken;
                 return $this->successResponse($token, 201);
             } else {
                 return $this->failsResponse("The provided credentials do not match our records.", 401);
