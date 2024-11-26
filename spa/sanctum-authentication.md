@@ -1,12 +1,12 @@
-# Backend Side (Laravel)
+# I. Backend Side (Laravel)
 Let's talk about backend first.
 
-## Installation
+## 1. Installation
 ```
 php artisan api:install
 ```
 
-## Use HasApiTokens in User.php
+## 2. Use HasApiTokens in User.php
 ```php
 // User.php
 use Laravel\Sanctum\HasApiTokens;
@@ -18,7 +18,7 @@ class User extends Authenticatable
 }
 ```
 
-## Routes (api.php)
+## 3. Routes (api.php)
 ```php
 // api.php
 
@@ -31,7 +31,7 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 ```
 
-## Common response in Controller.php
+## 4. Common response in Controller.php
 ```php
 // Controller.php
 /**
@@ -63,7 +63,7 @@ protected function failsResponse($message, $error, $statusCode = 500)
 }
 ```
 
-## AuthController Codes
+## 5. AuthController Codes
 ```php
 // AuthController.php
 
@@ -141,3 +141,8 @@ class AuthController extends Controller
     }
 }
 ```
+
+# Frontend Side (Vue.js)
+Now, let's implement in frontend side.
+
+## 1. 
