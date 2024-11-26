@@ -142,7 +142,7 @@ class AuthController extends Controller
 }
 ```
 
-# Frontend Side (Vue.js)
+# II. Frontend Side (Vue.js)
 Now, let's implement in frontend side.
 
 ## 1. Create axios instance
