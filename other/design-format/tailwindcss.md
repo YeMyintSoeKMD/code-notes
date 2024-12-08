@@ -64,7 +64,7 @@ Example:
 }
 ```
 
-# 6. For Every Section
+# 6. Element Structure
 ```html
 <nav id="navigation">
     <div class="container mx-auto">
