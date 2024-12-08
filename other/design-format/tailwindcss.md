@@ -63,3 +63,32 @@ Example:
     @apply px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600;
 }
 ```
+
+# 6. For Every Section
+```html
+<nav id="navigation">
+    <div class="container mx-auto">
+        ...
+    </div>
+</nav>
+<header id="header">
+    <div class="container mx-auto">
+        ...
+    </div>
+</header>
+<section id="about">
+    <div class="container mx-auto">
+        ...
+    </div>
+<section>
+<section id="services">
+    <div class="container mx-auto">
+        ...
+    </div>
+<section>
+<footer id="footer">
+    <div class="container mx-auto">
+        ...
+    </div>
+<footer>
+```
