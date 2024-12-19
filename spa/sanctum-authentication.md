@@ -29,7 +29,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('get-auth', [AuthController::class, 'getAuthUser']);
 });
 ```
-### Description
+### Sidenote
 - Don't forget to put "get-auth" route within the middleware, if it is not, auth user can't be fetch.
 
 ## 4. Add custom API response helper method in Controller.php
