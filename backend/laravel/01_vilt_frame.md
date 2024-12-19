@@ -419,9 +419,9 @@ const userNavigation = [
 <style lang="scss" scoped></style>
 ```
 
-<br />
 # III. Other Sidenote
-When we install Inertia using using a starter kit like breeze, some codes in "app.js" will be a little bit different from manually one. And it'l be difficult to add custom code for enabling multiple layout. So that this is the sample code from previous project -
+When we install Inertia using using a starter kit like breeze, some codes in ```app.js``` will be a little bit different from manually one. And it'l be difficult to add custom code for enabling multiple layout. So that this is the sample code from previous project -
+
 ```js
 // app.js
 import "../css/app.css";
