@@ -420,6 +420,58 @@ const userNavigation = [
 ```
 
 <br />
+# III. Other Sidenote
+When we install Inertia using using a starter kit like breeze, some codes in "app.js" will be a little bit different from manually one. And it'l be difficult to add custom code for enabling multiple layout. So that this is the sample code from previous project -
+```js
+// app.js
+import "../css/app.css";
+import "./bootstrap";
+import "preline/preline";
+
+import { createInertiaApp } from "@inertiajs/vue3";
+import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
+import { createApp, h } from "vue";
+import { ZiggyVue } from "../../vendor/tightenco/ziggy";
+import { Layout } from "./Composables/modules";
+import VueSweetalert2 from "vue-sweetalert2";
+import "sweetalert2/dist/sweetalert2.min.css";
+
+const appName = import.meta.env.VITE_APP_NAME || "Laravel";
+
+createInertiaApp({
+    title: (title) => `${title} - ${appName}`,
+    resolve: async (name) => {
+        const page = await resolvePageComponent(
+            `./Pages/${name}.vue`,
+            import.meta.glob("./Pages/**/*.vue")
+        );
+        page.default.layout = name.startsWith("Admin/") ? Layout : undefined;
+        return page;
+    },
+    setup({ el, App, props, plugin }) {
+        const app = createApp({ render: () => h(App, props) });
+
+        // Add global properties and plugins
+        app.config.globalProperties.$route = route;
+        app.use(plugin);
+        app.use(ZiggyVue);
+        app.use(VueSweetalert2);
+
+        // Reinitialize Preline components after each Inertia page navigation
+        app.config.globalProperties.$inertia.on("navigate", () => {
+            setTimeout(() => {
+                window.HSStaticMethods?.autoInit();
+            }, 100);
+        });
+
+        app.mount(el);
+    },
+    progress: {
+        color: "#4B5563",
+    },
+});
+```
+There are "Multiple layout", and "Preline config" added in the code sample.
 
 # IV. REFERENCE
 
