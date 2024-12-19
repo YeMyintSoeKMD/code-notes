@@ -153,13 +153,13 @@ This ensure wetting up axios with headers, authorization and token remove when t
 import axios from "axios";
 
 // Create an instance of Axios
-axios.create({
+const axiosInstance = axios.create({
   baseURL: "http://localhost:8000/api",
   headers: { "X-Requested-With": "XMLHttpRequest" },
 });
 
 // Add an interceptor to set the Authorization header
-axios.interceptors.request.use((config) => {
+axiosInstance.interceptors.request.use((config) => {
   const token = localStorage.getItem("appToken");
   if (token) {
     config.headers["Authorization"] = `Bearer ${token}`;
@@ -170,7 +170,7 @@ axios.interceptors.request.use((config) => {
 });
 
 // this is just to remove token from local storage when there is no token in the server
-axios.interceptors.response.use(
+axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
     // Handle 401 Unauthorized errors
@@ -182,7 +182,7 @@ axios.interceptors.response.use(
   }
 );
 
-export default axios;
+export default axiosInstance;
 ```
 
 ## 2. Authentication codes at store
