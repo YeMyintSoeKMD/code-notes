@@ -1,5 +1,5 @@
 # SEO Tips & Steps
-Basic SEC step for Vue.js application.
+Basic SEO step for Vue.js application.
 
 # 1. Robots
 A "robots.txt" file is a text file on a website that instructs search engine crawlers which pages on the site they can access and which ones they should not crawl, essentially acting as a set of rules to manage how search engines interact with a website and which content they can index; it's primarily used to prevent overloading a site with crawl requests by blocking access to specific areas like login pages or internal directories that aren't meant for public viewing.
