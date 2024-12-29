@@ -3,7 +3,7 @@ Basic SEC step for Vue.js application.
 
 # Robots
 Add ```robots.txt``` in public folder
-```html
+```js
 // /public/robots.txt
 
 User-agent: *
