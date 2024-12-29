@@ -78,3 +78,64 @@ import { Head } from '@unhead/vue/components'
 For detail instruction, check this - 
 
 https://unhead.unjs.io/setup/vue/installation
+
+# 6. Add Schemas
+Add schemas or JavaScript Object Notation for Linked Data to provide structured data to search engines. They help search engines better understand the content and structure of your website, enhancing its SEO.
+```js
+<!-- Schemas  -->
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Softland Myanmar",
+        "url": "https://www.softlandmyanmar.com",
+        "logo": "https://www.softlandmyanmar.com/logo.png", 
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+959 403 438 913", 
+          "contactType": "Customer Service",
+          "areaServed": ["MM"], 
+          "availableLanguage": ["en", "my"]
+        },
+        "sameAs": [
+          "https://www.facebook.com/hornbillit",
+          "https://www.linkedin.com/in/hitmyanmar/"
+        ]
+      }
+    </script>
+
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.softlandmyanmar.com"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Services",
+            "item": "https://www.softlandmyanmar.com/services"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Blogs",
+            "item": "https://www.softlandmyanmar.com/services/blogs"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Contact Us",
+            "item": "https://www.softlandmyanmar.com/contact"
+          }
+        ]
+      }
+    </script>
+```
