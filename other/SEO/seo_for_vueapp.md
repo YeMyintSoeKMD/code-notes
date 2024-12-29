@@ -60,3 +60,6 @@ TXT	@	0	"google-site-verification=oDL1ch6z_NcdjCgNqenKTIusqNKTcWZ3HUIck2wCq68"	1
 
 # 4. Submit sitemap to the google
 After added ```sitemap.xml``` file in the project, push to the production to be able to submit in **google search console**. To submit sitemap.xml, just navigate to the ```Indexing/Sitemaps``` and paste the site map url (https://www.softlandmyanmar.com/sitemap.xml) and click on submit button.
+
+# 5. Add Head tags in every page in the project
+To add head tag for head elements in Vue app, there is no built in head component in Vue.
