@@ -52,6 +52,7 @@ Add domain name in google search console for some enhancement.
 2. Add domain by clicking on "Add property"
 3. After adding domain address, copy the google-site-verification link and go to domain provider, and create as a record at DNS records list
 4. And click on verify button
+
 Example DNS Records
 ```
 TXT	@	0	"google-site-verification=oDL1ch6z_NcdjCgNqenKTIusqNKTcWZ3HUIck2wCq68"	14400
