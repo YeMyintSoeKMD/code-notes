@@ -62,4 +62,19 @@ TXT	@	0	"google-site-verification=oDL1ch6z_NcdjCgNqenKTIusqNKTcWZ3HUIck2wCq68"	1
 After added ```sitemap.xml``` file in the project, push to the production to be able to submit in **google search console**. To submit sitemap.xml, just navigate to the ```Indexing/Sitemaps``` and paste the site map url (https://www.softlandmyanmar.com/sitemap.xml) and click on submit button.
 
 # 5. Add Head tags in every page in the project
-To add head tag for head elements in Vue app, there is no built in head component in Vue.
+To add head tag for head elements in Vue app, there is no built in head component in Vue. So that ```unhead``` comes in handy. Just install it and use like the following
+```js
+// script
+import { Head } from '@unhead/vue/components'
+
+// template
+<Head>
+    <title>Softland | Home</title>
+    <meta name="description"
+        content="Software နှင့် Website ၊ Web Application တွေကို One-stop ရေးသားပေးနေပါသည်။" />
+</Head>
+```
+
+For detail instruction, check this - 
+
+https://unhead.unjs.io/setup/vue/installation
