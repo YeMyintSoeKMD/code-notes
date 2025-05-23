@@ -194,7 +194,3 @@ php artisan queue:retry <job-id>
 | **Worker**       | The process that runs jobs in the background                              |
 | **Delay**        | Run job after some time                                                   |
 | **Failed Job**   | Jobs that fail and can be retried later                                   |
-
----
-
-Would you like a real-world mini-project example (like sending emails after registration or image processing queue)?
