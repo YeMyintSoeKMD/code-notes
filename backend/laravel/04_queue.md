@@ -63,7 +63,7 @@ This creates a `jobs` table to store queued jobs. But later version of laravel c
 
 ## 🧱 Step 2: Create a Job
 
-Let’s create a job to send a welcome email to a user:
+Let’s create a job to send a welcome email to a user: 
 
 ```bash
 php artisan make:job SendWelcomeEmail
