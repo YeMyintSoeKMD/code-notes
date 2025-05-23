@@ -147,7 +147,7 @@ Or use **Supervisor** to keep workers alive (recommended for production).
 
 ## 📌 Step 5: Optional - Delay Jobs
 
-You can delay execution like this:
+You can delay execution like this: eg. Send email after 5 minutes later when user has been registered.
 
 ```php
 SendWelcomeEmail::dispatch($user)->delay(now()->addMinutes(5));
