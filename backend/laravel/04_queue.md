@@ -57,7 +57,7 @@ php artisan queue:table
 php artisan migrate
 ```
 
-This creates a `jobs` table to store queued jobs.
+This creates a `jobs` table to store queued jobs. But later version of laravel come with these out of the box.
 
 ---
 
