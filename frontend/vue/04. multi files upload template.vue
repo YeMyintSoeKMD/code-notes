@@ -51,6 +51,8 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
+
 const uploadedImages = ref([]);
 
 const handleImageUpload = (event) => {
